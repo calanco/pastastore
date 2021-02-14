@@ -1,8 +1,12 @@
 .SHELLFLAGS: -ec
 
-# Installing PastaStore dependencies
+# Installing PastaStore default packages from Pipfile
 deps:
 	@pipenv install
+
+# Installing PastaStore develop and default packages from Pipfile
+dev-deps:
+	@pipenv install --dev
 
 # Running PastaStore REST API
 .PHONY: run
@@ -17,3 +21,7 @@ clean:
 # Updating Pipfile.lock
 lock: 
 	@pipenv lock
+
+# Launching the flake8 linter
+flake8: dev-deps
+	@pipenv run flake8 --ignore=E302

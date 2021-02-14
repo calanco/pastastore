@@ -1,5 +1,4 @@
 from flask import Flask
-
 from pastastore.blueprints.root import root_blueprint
 
 def create_app(name):
