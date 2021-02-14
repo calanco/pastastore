@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 flask='*'
+bandit = "*"
 
 [dev-packages]
 flake8='*'

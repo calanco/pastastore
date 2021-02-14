@@ -25,3 +25,7 @@ lock:
 # Launching the flake8 linter
 run-linting: dev-deps
 	@pipenv run flake8
+
+# Launching the bandit secuirty linter
+run-security-linting: dev-deps
+	@pipenv run bandit -r .
