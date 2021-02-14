@@ -23,5 +23,5 @@ lock:
 	@pipenv lock
 
 # Launching the flake8 linter
-flake8: dev-deps
-	@pipenv run flake8 --ignore=E302
+run-linting: dev-deps
+	@pipenv run flake8
