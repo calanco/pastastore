@@ -9,7 +9,7 @@ You can vote for the following pasta recipes:
 4. `spaghetti pomodoro e basilico`
 5. `pasta al pesto`
 6. `amatriciana`
-7. `"pasta fredda`
+7. `pasta fredda`
 
 ## Instructions
 Use the following endpoints to know what are the most voted pasta recipes:
