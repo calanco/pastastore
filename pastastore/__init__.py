@@ -5,7 +5,7 @@ from pastastore.blueprints.get_recipes import get_recipes_blueprint
 from pastastore.blueprints.rank import rank_blueprint
 
 
-def create_app(name):
+def create_app(name) -> Flask:
     '''
     Creating the pastastore Flask application
     '''
