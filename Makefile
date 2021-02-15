@@ -1,5 +1,10 @@
 .SHELLFLAGS: -ec
 
+# Default make target
+.PHONY: default
+default:
+	$(MAKE) help
+
 # Installing PastaStore default packages from Pipfile
 deps:
 	@pipenv install
@@ -8,11 +13,22 @@ deps:
 dev-deps:
 	@pipenv install --dev
 
+# Running PastaStore REST API in debug mode
+.PHONY: debug
+debug: deps
+	@echo "Starting PastaStore in debug mode.."
+	@pipenv run python3 run.py --debug
+
 # Running PastaStore REST API
 .PHONY: run
 run: deps
 	@echo "Starting PastaStore.."
 	@pipenv run python3 run.py
+
+# Running PastaStore REST API
+.PHONY: help
+help: deps
+	@pipenv run python3 run.py --help
 
 # Removing the virtualenv created in deps make target
 clean:
