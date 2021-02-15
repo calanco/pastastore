@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.recipes import RECIPE_COUNTS
+from app.recipes import PASTA_RECIPE_COUNTS
 
 get_recipe_api = Blueprint('get_recipe_api', __name__)
 
@@ -9,7 +9,8 @@ def get_recipe(recipe):
     '''
     Handling the /get_recipe endpoint
     '''
-    if recipe not in RECIPE_COUNTS:
+    recipe = recipe.replace("_", " ")
+    if recipe not in PASTA_RECIPE_COUNTS:
         return "{} has not been added so far".format(recipe), 400
 
-    return str(RECIPE_COUNTS[recipe]), 200
+    return str(PASTA_RECIPE_COUNTS[recipe]), 200

@@ -1,7 +1,7 @@
 import heapq
 
 
-def sort_recipes(recipes: dict) -> list:
+def sort_pasta_recipes(recipes: dict) -> list:
     '''
     Sorting recipes using the heapsort. Getting the decreasing order from it
     '''

@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.recipes import RECIPES, RECIPE_COUNTS
+from app.recipes import PASTA_RECIPES, PASTA_RECIPE_COUNTS
 
 store_api = Blueprint('store_api', __name__)
 
@@ -15,8 +15,8 @@ def store():
         return "No recipe found", 400
 
     recipe = json_data["recipe"]
-    if recipe not in RECIPES:
-        return "Insert a valid recipe", 400
+    if recipe not in PASTA_RECIPES:
+        return "Insert a valid pasta recipe", 400
 
     add_recipe_count(recipe)
 
@@ -25,8 +25,8 @@ def store():
 
 def add_recipe_count(recipe: str):
     '''
-    Adding the inserted recipe to RECIPE_COUNTS dict
+    Adding the inserted recipe to PASTA_RECIPE_COUNTS dict
     '''
-    if recipe not in RECIPE_COUNTS:
-        RECIPE_COUNTS[recipe] = 0
-    RECIPE_COUNTS[recipe] += 1
+    if recipe not in PASTA_RECIPE_COUNTS:
+        PASTA_RECIPE_COUNTS[recipe] = 0
+    PASTA_RECIPE_COUNTS[recipe] += 1

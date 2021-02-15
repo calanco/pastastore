@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.recipes import RECIPE_COUNTS
+from app.recipes import PASTA_RECIPE_COUNTS
 
 get_recipes_api = Blueprint('get_recipes_api', __name__)
 
@@ -9,7 +9,7 @@ def get_recipes():
     '''
     Handling the /get_recipes endpoint
     '''
-    if not RECIPE_COUNTS:
+    if not PASTA_RECIPE_COUNTS:
         return "No recipe has been added so far", 400
 
-    return RECIPE_COUNTS, 200
+    return PASTA_RECIPE_COUNTS, 200

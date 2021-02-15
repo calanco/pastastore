@@ -1,6 +1,6 @@
 from flask import Blueprint
-from app.recipes import RECIPE_COUNTS
-from app.api.utils import sort_recipes
+from app.recipes import PASTA_RECIPE_COUNTS
+from app.api.utils import sort_pasta_recipes
 
 rank_api = Blueprint('rank_api', __name__)
 
@@ -10,14 +10,14 @@ def rank():
     '''
     Handling the /rank endpoint
     '''
-    if not RECIPE_COUNTS:
+    if not PASTA_RECIPE_COUNTS:
         return "No recipe has been added so far", 200
 
-    sorted_recipe_counts = sort_recipes(RECIPE_COUNTS)
+    sorted_pasta_recipe_counts = sort_pasta_recipes(PASTA_RECIPE_COUNTS)
 
     result = dict()
     rank = 1
-    for recipe in sorted_recipe_counts:
+    for recipe in sorted_pasta_recipe_counts:
         result[rank] = recipe
         rank += 1
 

@@ -1,6 +1,7 @@
-# RECIPES holds the allowed recipes
-RECIPES = ["lasagne", "spaghetti_alla_carbonara", "linguine_al_pesto",
-           "cannelloni"]
+# PASTA_RECIPES holds the allowed recipes
+PASTA_RECIPES = {"cacio e pepe", "carbonara", "ragù alla bolognese",
+                 "spaghetti pomodoro e basilico", "pasta al pesto",
+                 "amatriciana", "pasta fredda"}
 
-# RECIPE_COUNTS holds the count of stored recipes
-RECIPE_COUNTS = dict({})
+# PASTA_RECIPE_COUNTS holds the count of stored recipes
+PASTA_RECIPE_COUNTS = dict({})
