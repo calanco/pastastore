@@ -1,5 +1,6 @@
 from flask import Blueprint
 from pastastore.recipes import RECIPE_COUNTS
+from pastastore.blueprints.utils import sort_recipes
 
 rank_blueprint = Blueprint('rank_blueprint', __name__)
 
@@ -12,8 +13,7 @@ def rank():
     if not RECIPE_COUNTS:
         return "No recipe has been added so far", 200
 
-    sorted_recipe_counts = sorted(RECIPE_COUNTS.items(),
-                                  key=lambda item: item[1], reverse=True)
+    sorted_recipe_counts = sort_recipes(RECIPE_COUNTS)
 
     result = dict()
     rank = 1
