@@ -19,6 +19,7 @@ def store():
         return "Insert a valid recipe", 400
 
     add_recipe_count(recipe)
+
     return "{} has been added".format(recipe), 200
 
 
