@@ -1,6 +1,6 @@
 from flask import Blueprint
-from pastastore.recipes import RECIPE_COUNTS
-from pastastore.blueprints.utils import sort_recipes
+from app.recipes import RECIPE_COUNTS
+from app.blueprints.utils import sort_recipes
 
 rank_blueprint = Blueprint('rank_blueprint', __name__)
 

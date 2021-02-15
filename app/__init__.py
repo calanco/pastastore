@@ -1,8 +1,8 @@
 from flask import Flask
-from pastastore.blueprints.root import root_blueprint
-from pastastore.blueprints.store import store_blueprint
-from pastastore.blueprints.get_recipes import get_recipes_blueprint
-from pastastore.blueprints.rank import rank_blueprint
+from app.blueprints.root import root_blueprint
+from app.blueprints.store import store_blueprint
+from app.blueprints.get_recipes import get_recipes_blueprint
+from app.blueprints.rank import rank_blueprint
 
 
 def create_app(name) -> Flask:

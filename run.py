@@ -1,4 +1,4 @@
-import pastastore
+from app import create_app
 import argparse
 
 
@@ -16,5 +16,5 @@ def parse_arguments() -> (int, bool):
 if __name__ == '__main__':
     port, debug = parse_arguments()
 
-    app = pastastore.create_app(__name__)
+    app = create_app(__name__)
     app.run(port=port, debug=debug)
