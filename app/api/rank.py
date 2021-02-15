@@ -18,7 +18,7 @@ def rank():
     result = dict()
     rank = 1
     for recipe in sorted_pasta_recipe_counts:
-        result[rank] = recipe
+        result[rank] = dict({"recipe": recipe[0], "votes": recipe[1]})
         rank += 1
 
     return result, 200
