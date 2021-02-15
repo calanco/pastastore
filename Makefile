@@ -17,13 +17,13 @@ dev-deps:
 .PHONY: debug
 debug: deps
 	@echo "Starting PastaStore in debug mode.."
-	@pipenv run python3 run.py --debug
+	@pipenv run python3 run.py --debug --env development
 
 # Running PastaStore REST API
 .PHONY: run
 run: deps
 	@echo "Starting PastaStore.."
-	@pipenv run python3 run.py
+	@pipenv run python3 run.py --env development
 
 # Running PastaStore REST API
 .PHONY: help
