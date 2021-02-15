@@ -10,4 +10,5 @@ You can choose among the following pasta recipes:
 
 Use the following endpoints:
 - `/store` POST: upload a JSON message containing the `recipe` as a key
-- `/get_recipes` GET: retrieve the ranked pasta recipes
+- `/get_recipes` GET: retrieve all the added pasta recipes
+- `/rank` GET: get the rank of pasta recipes
