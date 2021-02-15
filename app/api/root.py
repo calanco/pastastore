@@ -1,9 +1,9 @@
 from flask import Blueprint
 
-root_blueprint = Blueprint('root_blueprint', __name__)
+root_api = Blueprint('root_api', __name__)
 
 
-@root_blueprint.route('/', methods=['GET'])
+@root_api.route('/', methods=['GET'])
 def root():
     '''
     Handling the / endpoint

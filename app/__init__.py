@@ -1,8 +1,8 @@
 from flask import Flask
-from app.blueprints.root import root_blueprint
-from app.blueprints.store import store_blueprint
-from app.blueprints.get_recipes import get_recipes_blueprint
-from app.blueprints.rank import rank_blueprint
+from app.api.root import root_api
+from app.api.store import store_api
+from app.api.get_recipes import get_recipes_api
+from app.api.rank import rank_api
 
 
 def create_app(name) -> Flask:
@@ -18,9 +18,9 @@ def create_app(name) -> Flask:
 
 def register_blueprints(app: Flask):
     '''
-    Registering all needed pastastore Flask blueprints
+    Registering all needed pastastore Flask apis
     '''
-    app.register_blueprint(root_blueprint)
-    app.register_blueprint(store_blueprint)
-    app.register_blueprint(get_recipes_blueprint)
-    app.register_blueprint(rank_blueprint)
+    app.register_blueprint(root_api)
+    app.register_blueprint(store_api)
+    app.register_blueprint(get_recipes_api)
+    app.register_blueprint(rank_api)

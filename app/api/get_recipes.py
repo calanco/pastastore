@@ -1,10 +1,10 @@
 from flask import Blueprint
 from app.recipes import RECIPE_COUNTS
 
-get_recipes_blueprint = Blueprint('get_recipes_blueprint', __name__)
+get_recipes_api = Blueprint('get_recipes_api', __name__)
 
 
-@get_recipes_blueprint.route('/get_recipes', methods=['GET'])
+@get_recipes_api.route('/get_recipes', methods=['GET'])
 def get_recipes():
     '''
     Handling the /get_recipes endpoint

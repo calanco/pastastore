@@ -1,11 +1,11 @@
 from flask import Blueprint
 from app.recipes import RECIPE_COUNTS
-from app.blueprints.utils import sort_recipes
+from app.api.utils import sort_recipes
 
-rank_blueprint = Blueprint('rank_blueprint', __name__)
+rank_api = Blueprint('rank_api', __name__)
 
 
-@rank_blueprint.route('/rank', methods=['GET'])
+@rank_api.route('/rank', methods=['GET'])
 def rank():
     '''
     Handling the /rank endpoint

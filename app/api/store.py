@@ -1,10 +1,10 @@
 from flask import Blueprint, request
 from app.recipes import RECIPES, RECIPE_COUNTS
 
-store_blueprint = Blueprint('store_blueprint', __name__)
+store_api = Blueprint('store_api', __name__)
 
 
-@store_blueprint.route('/store', methods=['POST'])
+@store_api.route('/store', methods=['POST'])
 def store():
     '''
     Handling the /store endpoint
