@@ -10,6 +10,6 @@ def get_recipes():
     Handling the /get_recipes endpoint
     '''
     if not RECIPE_COUNTS:
-        return "No recipe has been added so far", 200
+        return "No recipe has been added so far", 400
 
     return RECIPE_COUNTS, 200
