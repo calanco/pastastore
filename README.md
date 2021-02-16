@@ -17,3 +17,4 @@ Use the following endpoints to know what are the most voted pasta recipes:
 - `/get_recipe/<recipe>` GET: retrieve the votes of pasta `recipe`
 - `/get_recipes` GET: retrieve all the voted pasta recipes and see their votes
 - `/rank` GET: get the rank of all pasta recipes!
+- `/clean` GET: delete all votes
