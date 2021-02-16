@@ -1,4 +1,4 @@
-from app.api.utils import sort_pasta_recipes
+from pastastore.api.utils import sort_pasta_recipes
 
 
 def test_sort_pasta_recipes():

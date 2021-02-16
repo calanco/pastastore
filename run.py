@@ -1,6 +1,6 @@
 import argparse
 import os
-from app import create_app
+from pastastore import create_app
 
 
 def parse_arguments() -> (int, bool, str):

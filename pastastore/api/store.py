@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.recipes import PASTA_RECIPES, PASTA_RECIPE_COUNTS
+from pastastore.recipes import PASTA_RECIPES, PASTA_RECIPE_COUNTS
 
 store_api = Blueprint('store_api', __name__)
 
