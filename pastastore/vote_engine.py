@@ -1,6 +1,9 @@
 import os
 import json
 import heapq
+import threading
+
+lock = threading.Lock()
 
 
 class VoteEngine():
@@ -15,15 +18,17 @@ class VoteEngine():
         Initializing counts and pasta_recipes attributes
         '''
         super().__init__()
-        if not os.path.isfile("votes.txt"):
-            open("votes.txt", 'a').close()
 
-        with open("votes.txt", 'r') as vote_file:
-            try:
-                votes = json.load(vote_file)
-                self.counts = dict(votes)
-            except json.decoder.JSONDecodeError as e:
-                print(e)
+        with lock:
+            if not os.path.isfile("votes.txt"):
+                open("votes.txt", 'a').close()
+
+            with open("votes.txt", 'r') as vote_file:
+                try:
+                    votes = json.load(vote_file)
+                    self.counts = dict(votes)
+                except json.decoder.JSONDecodeError as e:
+                    print(e)
 
         self.pasta_recipes = {"cacio e pepe", "carbonara",
                               "ragù alla bolognese",
@@ -39,11 +44,12 @@ class VoteEngine():
             self.counts[recipe] = 0
         self.counts[recipe] += 1
 
-        with open("votes.txt", 'w') as vote_file:
-            try:
-                json.dump(self.counts, vote_file)
-            except json.decoder.JSONDecodeError as e:
-                print(e)
+        with lock:
+            with open("votes.txt", 'w') as vote_file:
+                try:
+                    json.dump(self.counts, vote_file)
+                except json.decoder.JSONDecodeError as e:
+                    print(e)
 
     def sort_pasta_recipes(self, recipes: dict) -> list:
         '''
@@ -66,11 +72,13 @@ class VoteEngine():
         Cleaning saved votes
         '''
         self.counts = dict()
-        with open("votes.txt", 'w') as vote_file:
-            try:
-                json.dump(self.counts, vote_file)
-            except json.decoder.JSONDecodeError as e:
-                print(e)
+
+        with lock:
+            with open("votes.txt", 'w') as vote_file:
+                try:
+                    json.dump(self.counts, vote_file)
+                except json.decoder.JSONDecodeError as e:
+                    print(e)
 
 
 ve = VoteEngine()
