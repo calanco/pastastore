@@ -352,3 +352,6 @@ MigrationBackup/
 
 # pytest
 .pytest*
+
+# Vote files
+votes.txt

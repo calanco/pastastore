@@ -1,5 +1,5 @@
 from flask import Blueprint
-from pastastore.recipes import PASTA_RECIPE_COUNTS
+from pastastore.vote_engine import ve
 
 get_recipes_api = Blueprint('get_recipes_api', __name__)
 
@@ -9,7 +9,7 @@ def get_recipes():
     '''
     Handling the /get_recipes endpoint
     '''
-    if not PASTA_RECIPE_COUNTS:
+    if not ve.counts:
         return "No recipe has been added so far", 400
 
-    return PASTA_RECIPE_COUNTS, 200
+    return ve.counts, 200

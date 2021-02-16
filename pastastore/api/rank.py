@@ -1,6 +1,5 @@
 from flask import Blueprint
-from pastastore.recipes import PASTA_RECIPE_COUNTS
-from pastastore.api.utils import sort_pasta_recipes
+from pastastore.vote_engine import ve
 
 rank_api = Blueprint('rank_api', __name__)
 
@@ -10,10 +9,10 @@ def rank():
     '''
     Handling the /rank endpoint
     '''
-    if not PASTA_RECIPE_COUNTS:
+    if not ve.counts:
         return "No recipe has been added so far", 200
 
-    sorted_pasta_recipe_counts = sort_pasta_recipes(PASTA_RECIPE_COUNTS)
+    sorted_pasta_recipe_counts = ve.sort_pasta_recipes(ve.counts)
 
     result = dict()
     rank = 1

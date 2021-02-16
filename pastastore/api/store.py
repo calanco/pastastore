@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from pastastore.recipes import PASTA_RECIPES, PASTA_RECIPE_COUNTS
+from pastastore.vote_engine import ve
 
 store_api = Blueprint('store_api', __name__)
 
@@ -15,18 +15,9 @@ def store():
         return "No recipe found", 400
 
     recipe = json_data["recipe"]
-    if recipe not in PASTA_RECIPES:
+    if recipe not in ve.pasta_recipes:
         return "Insert a valid pasta recipe", 400
 
-    add_recipe_count(recipe)
+    ve.vote_recipe(recipe)
 
     return "{} has been added".format(recipe), 200
-
-
-def add_recipe_count(recipe: str):
-    '''
-    Adding the inserted recipe to PASTA_RECIPE_COUNTS dict
-    '''
-    if recipe not in PASTA_RECIPE_COUNTS:
-        PASTA_RECIPE_COUNTS[recipe] = 0
-    PASTA_RECIPE_COUNTS[recipe] += 1
