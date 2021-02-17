@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from pastastore.vote_engine import ve
 from pastastore.logger import logger
+from pastastore.recipe_error import RecipeError
 
 store_api = Blueprint('store_api', __name__)
 
@@ -19,13 +20,14 @@ def store():
         return msg, status_code
 
     recipe = json_data["recipe"]
-    if recipe not in ve.get_pasta_recipes():
-        msg, status_code = "Insert a valid pasta recipe", 400
-        logger.info("{} {}".format(msg, status_code))
-        return msg, status_code
 
-    ve.vote_recipe(recipe)
+    msg, status_code = "", ""
+    try:
+        ve.vote_recipe(recipe)
+    except RecipeError as re:
+        msg, status_code = str(re), 400
+    else:
+        msg, status_code = "{} has been added".format(recipe), 200
 
-    msg, status_code = "{} has been added".format(recipe), 200
     logger.info("{} {}".format(msg, status_code))
     return msg, status_code

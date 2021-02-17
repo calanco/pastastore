@@ -2,7 +2,8 @@ import os
 import json
 import heapq
 import threading
-from pastastore.logger import logger
+from .logger import logger
+from .recipe_error import RecipeError
 
 lock = threading.Lock()
 
@@ -46,8 +47,10 @@ class VoteEngine():
 
     def get_vote(self, recipe: str) -> int:
         '''
-        Returning votes
+        Returning vote of recipe
         '''
+        if recipe not in self.__votes:
+            return 0
         return self.__votes[recipe]
 
     def get_pasta_recipes(self) -> set:
@@ -60,6 +63,9 @@ class VoteEngine():
         '''
         Voting recipe
         '''
+        if recipe not in self.__pasta_recipes:
+            raise RecipeError(recipe)
+
         if recipe not in self.__votes:
             self.__votes[recipe] = 0
         self.__votes[recipe] += 1
