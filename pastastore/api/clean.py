@@ -1,5 +1,6 @@
 from flask import Blueprint
 from pastastore.vote_engine import ve
+from pastastore.logger import logger
 
 clean_api = Blueprint('clean_api', __name__)
 
@@ -9,5 +10,10 @@ def root():
     '''
     Handling the /clean endpoint
     '''
+    logger.info("/clean")
+
     ve.clean_votes()
-    return "Cleaned", 200
+
+    msg, status_code = "Cleaned", 200
+    logger.info("{} {}".format(msg, status_code))
+    return msg, status_code

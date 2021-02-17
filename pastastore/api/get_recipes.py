@@ -1,5 +1,6 @@
 from flask import Blueprint
 from pastastore.vote_engine import ve
+from pastastore.logger import logger
 
 get_recipes_api = Blueprint('get_recipes_api', __name__)
 
@@ -9,7 +10,13 @@ def get_recipes():
     '''
     Handling the /get_recipes endpoint
     '''
-    if not ve.counts:
-        return "No recipe has been added so far", 400
+    logger.info("/get_recipes")
 
-    return ve.counts, 200
+    if not ve.counts:
+        msg, status_code = "No recipe has been added so far", 400
+        logger.info("{} {}".format(msg, status_code))
+        return msg, status_code
+
+    msg, status_code = ve.counts, 200
+    logger.info("{} {}".format(msg, status_code))
+    return msg, status_code

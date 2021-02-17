@@ -2,6 +2,7 @@ import os
 import json
 import heapq
 import threading
+from pastastore.logger import logger
 
 lock = threading.Lock()
 
@@ -21,6 +22,7 @@ class VoteEngine():
 
         with lock:
             if not os.path.isfile("votes.txt"):
+                logger.warning("Creating votes.txt file")
                 open("votes.txt", 'a').close()
 
             with open("votes.txt", 'r') as vote_file:
@@ -28,7 +30,7 @@ class VoteEngine():
                     votes = json.load(vote_file)
                     self.counts = dict(votes)
                 except json.decoder.JSONDecodeError as e:
-                    print(e)
+                    logger.error(e)
 
         self.pasta_recipes = {"cacio e pepe", "carbonara",
                               "ragù alla bolognese",
@@ -49,7 +51,7 @@ class VoteEngine():
                 try:
                     json.dump(self.counts, vote_file)
                 except json.decoder.JSONDecodeError as e:
-                    print(e)
+                    logger.error(e)
 
     def sort_pasta_recipes(self, recipes: dict) -> list:
         '''
@@ -78,7 +80,7 @@ class VoteEngine():
                 try:
                     json.dump(self.counts, vote_file)
                 except json.decoder.JSONDecodeError as e:
-                    print(e)
+                    logger.error(e)
 
 
 ve = VoteEngine()

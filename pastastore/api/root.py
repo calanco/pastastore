@@ -1,4 +1,5 @@
 from flask import Blueprint
+from pastastore.logger import logger
 
 root_api = Blueprint('root_api', __name__)
 
@@ -8,4 +9,8 @@ def root():
     '''
     Handling the / endpoint
     '''
-    return "Welcome to PastaStore!"
+    logger.info("/")
+
+    msg = "Welcome to PastaStore!"
+    logger.info(msg)
+    return msg
