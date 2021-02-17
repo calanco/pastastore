@@ -1,5 +1,9 @@
 repos:
--   repo: https://gitlab.com/pycqa/flake8
+  - repo: https://gitlab.com/pycqa/flake8
     rev: ''
     hooks:
-    -   id: flake8
+    - id: flake8
+  - repo: https://github.com/PyCQA/bandit
+    rev: ''
+    hooks:
+    - id: bandit
