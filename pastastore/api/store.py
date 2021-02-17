@@ -19,7 +19,7 @@ def store():
         return msg, status_code
 
     recipe = json_data["recipe"]
-    if recipe not in ve.pasta_recipes:
+    if recipe not in ve.get_pasta_recipes():
         msg, status_code = "Insert a valid pasta recipe", 400
         logger.info("{} {}".format(msg, status_code))
         return msg, status_code

@@ -12,12 +12,12 @@ def rank():
     '''
     logger.info("/rank")
 
-    if not ve.counts:
+    if not ve.get_votes():
         msg, status_code = "No recipe has been added so far", 200
         logger.info("{} {}".format(msg, status_code))
         return msg, status_code
 
-    sorted_pasta_recipe_counts = ve.sort_pasta_recipes(ve.counts)
+    sorted_pasta_recipe_counts = ve.sort_pasta_recipes(ve.get_votes())
 
     result = dict()
     rank = 1

@@ -9,14 +9,14 @@ lock = threading.Lock()
 
 class VoteEngine():
     # holds the allowed recipes
-    counts = dict()
+    __votes = dict()
 
     # pasta_recipes holds the allowed recipes
-    pasta_recipes = set()
+    __pasta_recipes = set()
 
     def __init__(self):
         '''
-        Initializing counts and pasta_recipes attributes
+        Initializing votes and pasta_recipes attributes
         '''
         super().__init__()
 
@@ -28,28 +28,46 @@ class VoteEngine():
             with open("votes.txt", 'r') as vote_file:
                 try:
                     votes = json.load(vote_file)
-                    self.counts = dict(votes)
+                    self.__votes = dict(votes)
                 except json.decoder.JSONDecodeError as e:
                     logger.error(e)
 
-        self.pasta_recipes = {"cacio e pepe", "carbonara",
+        self.__pasta_recipes = {"cacio e pepe", "carbonara",
                               "ragù alla bolognese",
                               "spaghetti pomodoro e basilico",
                               "pasta al pesto", "amatriciana",
                               "pasta fredda"}
 
+    def get_votes(self) -> dict:
+        '''
+        Returning votes
+        '''
+        return self.__votes
+
+    def get_vote(self, recipe: str) -> int:
+        '''
+        Returning votes
+        '''
+        return self.__votes[recipe]
+
+    def get_pasta_recipes(self) -> set:
+        '''
+        Returning pasta_recipes
+        '''
+        return self.__pasta_recipes
+
     def vote_recipe(self, recipe: str):
         '''
         Voting recipe
         '''
-        if recipe not in self.counts:
-            self.counts[recipe] = 0
-        self.counts[recipe] += 1
+        if recipe not in self.__votes:
+            self.__votes[recipe] = 0
+        self.__votes[recipe] += 1
 
         with lock:
             with open("votes.txt", 'w') as vote_file:
                 try:
-                    json.dump(self.counts, vote_file)
+                    json.dump(self.__votes, vote_file)
                 except json.decoder.JSONDecodeError as e:
                     logger.error(e)
 
@@ -73,12 +91,12 @@ class VoteEngine():
         '''
         Cleaning saved votes
         '''
-        self.counts = dict()
+        self.__votes = dict()
 
         with lock:
             with open("votes.txt", 'w') as vote_file:
                 try:
-                    json.dump(self.counts, vote_file)
+                    json.dump(self.__votes, vote_file)
                 except json.decoder.JSONDecodeError as e:
                     logger.error(e)
 
