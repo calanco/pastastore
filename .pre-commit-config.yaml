@@ -2,12 +2,14 @@ repos:
   - repo: local
     hooks:
     - id: flake8
-      name: flake8
+      name: flake8 linter
       stages: [commit]
       language: system
       entry: pipenv run flake8
       types: [python]
-  - repo: https://github.com/PyCQA/bandit
-    rev: ''
-    hooks:
     - id: bandit
+      name: bandit security linter
+      stages: [commit]
+      language: system
+      entry: pipenv run bandit -r .
+      types: [python]
