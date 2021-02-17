@@ -1,8 +1,12 @@
 repos:
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: ''
+  - repo: local
     hooks:
     - id: flake8
+      name: flake8
+      stages: [commit]
+      language: system
+      entry: pipenv run flake8
+      types: [python]
   - repo: https://github.com/PyCQA/bandit
     rev: ''
     hooks:
