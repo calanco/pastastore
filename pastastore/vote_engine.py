@@ -33,10 +33,10 @@ class VoteEngine():
                     logger.error(e)
 
         self.__pasta_recipes = {"cacio e pepe", "carbonara",
-                              "ragù alla bolognese",
-                              "spaghetti pomodoro e basilico",
-                              "pasta al pesto", "amatriciana",
-                              "pasta fredda"}
+                                "ragù alla bolognese",
+                                "spaghetti pomodoro e basilico",
+                                "pasta al pesto", "amatriciana",
+                                "pasta fredda"}
 
     def get_votes(self) -> dict:
         '''
