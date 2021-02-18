@@ -44,7 +44,7 @@ run-linting: dev-deps
 
 # Launching the bandit secuirty linter
 run-security-linting: dev-deps
-	@pipenv run bandit -r .
+	@pipenv run bandit -r . --configfile .bandit.yaml
 
 # Running unit tests with pytest
 test: dev-deps

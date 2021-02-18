@@ -11,5 +11,5 @@ repos:
       name: bandit security linter
       stages: [commit]
       language: system
-      entry: pipenv run bandit -r .
+      entry: pipenv run bandit -r --configfile .bandit.yaml .
       types: [python]

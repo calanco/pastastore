@@ -73,7 +73,7 @@ class VoteEngine():
         with lock:
             with open("votes.txt", 'w') as vote_file:
                 try:
-                    json.dump(self.__votes, vote_file)
+                    json.dump(self.__votes, vote_file, indent=4)
                 except json.decoder.JSONDecodeError as e:
                     logger.error(e)
 
@@ -102,7 +102,7 @@ class VoteEngine():
         with lock:
             with open("votes.txt", 'w') as vote_file:
                 try:
-                    json.dump(self.__votes, vote_file)
+                    json.dump(self.__votes, vote_file, indent=4)
                 except json.decoder.JSONDecodeError as e:
                     logger.error(e)
 
