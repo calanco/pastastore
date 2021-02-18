@@ -13,7 +13,7 @@ You can vote for the following pasta recipes:
 
 ## Instructions
 Use the following endpoints to know what are the most voted pasta recipes:
-- `/store` POST: vote for your pasta recipe! Upload a JSON message containing the `recipe` as a key
+- `/vote` POST: vote for your pasta recipe! Upload a JSON message containing the `recipe` as a key
 - `/get_recipe/<recipe>` GET: retrieve the votes of pasta `recipe`
 - `/get_recipes` GET: retrieve all the voted pasta recipes and see their votes
 - `/rank` GET: get the rank of all pasta recipes!
@@ -33,9 +33,9 @@ The access to the file is handled by a `threading.Lock()` resource:
 ### file.log
 A `file.log` log file will be created in the root directory:
 ```
-2021-02-17 20:01:28,609 - pastastore.logger - INFO - /store {'recipe': 'carbonara'}
+2021-02-17 20:01:28,609 - pastastore.logger - INFO - /vote {'recipe': 'carbonara'}
 2021-02-17 20:01:28,609 - pastastore.logger - INFO - carbonara has been added 200
-2021-02-17 20:01:30,730 - pastastore.logger - INFO - /store {'recipe': 'cacio e pepe'}
+2021-02-17 20:01:30,730 - pastastore.logger - INFO - /vote {'recipe': 'cacio e pepe'}
 2021-02-17 20:01:30,731 - pastastore.logger - INFO - cacio e pepe has been added 200
 2021-02-17 20:01:32,720 - pastastore.logger - INFO - /get_recipes
 2021-02-17 20:01:32,720 - pastastore.logger - INFO - {'carbonara': 1, 'cacio e pepe': 1} 200

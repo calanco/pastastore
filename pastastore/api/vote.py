@@ -3,16 +3,16 @@ from pastastore.vote_engine import ve
 from pastastore.logger import logger
 from pastastore.recipe_error import RecipeError
 
-store_api = Blueprint('store_api', __name__)
+vote_api = Blueprint('vote_api', __name__)
 
 
-@store_api.route('/store', methods=['POST'])
-def store():
+@vote_api.route('/vote', methods=['POST'])
+def vote():
     '''
-    Handling the /store endpoint
+    Handling the /vote endpoint
     '''
     json_data = request.json
-    logger.info("{} {}".format("/store", json_data))
+    logger.info("{} {}".format("/vote", json_data))
 
     if "recipe" not in json_data:
         msg, status_code = "No recipe found", 400
