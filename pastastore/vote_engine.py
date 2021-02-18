@@ -77,7 +77,7 @@ class VoteEngine():
                 except json.decoder.JSONDecodeError as e:
                     logger.error(e)
 
-    def sort_pasta_recipes(self, recipes: dict) -> list:
+    def sort_pasta_recipes(self, recipes: dict) -> tuple:
         '''
         Sorting recipes using heapsort. Getting the decreasing order from it
         '''
@@ -87,11 +87,8 @@ class VoteEngine():
 
         negated_sorted_recipe = [heapq.heappop(h) for i in range(len(h))]
 
-        sorted_recipe = []
         for recipe in negated_sorted_recipe:
-            sorted_recipe.append((recipe[1], -recipe[0],))
-
-        return sorted_recipe
+            yield (recipe[1], -recipe[0],)
 
     def clean_votes(self):
         '''

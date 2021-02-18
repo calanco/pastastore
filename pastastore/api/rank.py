@@ -17,7 +17,7 @@ def rank():
         logger.info("{} {}".format(msg, status_code))
         return msg, status_code
 
-    sorted_pasta_recipe_counts = ve.sort_pasta_recipes(ve.get_votes())
+    sorted_pasta_recipe_counts = tuple(ve.sort_pasta_recipes(ve.get_votes()))
 
     result = dict()
     rank = 1
