@@ -15,9 +15,8 @@ def get_recipe(recipe):
 
     if recipe not in ve.get_votes():
         msg, status_code = "{} has not been added so far".format(recipe), 400
-        logger.info("{} {}".format(msg, status_code))
-        return msg, status_code
+    else:
+        msg, status_code = str(ve.get_vote(recipe)), 200
 
-    msg, status_code = str(ve.get_vote(recipe)), 200
     logger.info("{} {}".format(msg, status_code))
     return msg, status_code
