@@ -32,12 +32,12 @@ class TestVoteEngine():
         input_recipes = {"cacio e pepe": 1, "carbonara": 2, "amatriciana": 3}
         expected_output_recipes = (("amatriciana", 3,), ("carbonara", 2,),
                                    ("cacio e pepe", 1,),)
-        output = tuple(ve.sort_pasta_recipes(input_recipes))
+        output = tuple(ve.sort_pasta_recipes(**input_recipes))
         assert output == expected_output_recipes
 
     def test_sort_pasta_recipes_wrong(self):
         input_recipes = {"cacio e pepe": 1, "carbonara": 2, "amatriciana": 3}
         expected_output_recipes = (("cacio e pepe", 1,), ("carbonara", 2,),
                                    ("amatriciana", 3,),)
-        output = tuple(ve.sort_pasta_recipes(input_recipes))
+        output = tuple(ve.sort_pasta_recipes(**input_recipes))
         assert output != expected_output_recipes
