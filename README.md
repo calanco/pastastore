@@ -24,7 +24,10 @@ All votes will be stored in a `votes.txt` JSON file in the root directory.
 
 The access to the file is handled by a `threading.Lock()` resource:
 ```
-{"cacio e pepe": 3, "carbonara": 1}
+{
+    "cacio e pepe": 4,
+    "carbonara": 2
+}
 ```
 
 ### file.log
