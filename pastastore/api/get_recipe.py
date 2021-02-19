@@ -13,10 +13,10 @@ def get_recipe(recipe):
     recipe = recipe.replace("_", " ")
     logger.info("{} {}".format("/get_recipe", recipe))
 
-    if recipe not in ve.get_votes():
-        msg, status_code = "{} has not been added so far".format(recipe), 400
-    else:
+    try:
         msg, status_code = str(ve.get_vote(recipe)), 200
+    except KeyError:
+        msg, status_code = "{} has not been added so far".format(recipe), 400
 
     logger.info("{} {}".format(msg, status_code))
     return msg, status_code

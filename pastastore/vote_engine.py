@@ -49,8 +49,6 @@ class VoteEngine():
         '''
         Returning vote of recipe
         '''
-        if recipe not in self.__votes:
-            return 0
         return self.__votes[recipe]
 
     def get_pasta_recipes(self) -> set:
@@ -83,12 +81,12 @@ class VoteEngine():
         '''
         h = []
         for recipe in kwargs.items():
-            heapq.heappush(h, (-recipe[1], recipe[0],))
+            heapq.heappush(h, (-recipe[1], recipe[0]))
 
         negated_sorted_recipe = [heapq.heappop(h) for i in range(len(h))]
 
         for recipe in negated_sorted_recipe:
-            yield (recipe[1], -recipe[0],)
+            yield (recipe[1], -recipe[0])
 
     def clean_votes(self):
         '''

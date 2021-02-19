@@ -12,10 +12,10 @@ def get_recipes():
     '''
     logger.info("/get_recipes")
 
-    if not ve.get_votes():
-        msg, status_code = "No recipe has been added so far", 400
-    else:
+    try:
         msg, status_code = ve.get_votes(), 200
+    except KeyError:
+        msg, status_code = "No recipe has been added so far", 400
 
     logger.info("{} {}".format(msg, status_code))
     return msg, status_code
