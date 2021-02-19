@@ -4,6 +4,9 @@ from pastastore import create_app
 
 
 def parse_arguments() -> (int, bool, str):
+    '''
+    Parsing input arguments passed to PastaStore
+    '''
     parser = argparse.ArgumentParser(description="Run PastaStore REST API")
     parser.add_argument("--port", dest="port", type=int, default=5000,
                         help="The port where PastaStore is exposed to")
