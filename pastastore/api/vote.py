@@ -15,7 +15,7 @@ def vote():
     logger.info("{} {}".format("/vote", json_data))
 
     if "recipe" not in json_data:
-        msg, status_code = "No recipe found", 400
+        msg, status_code = "No recipe found", 404
         logger.info("{} {}".format(msg, status_code))
         return msg, status_code
 
