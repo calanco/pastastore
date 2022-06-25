@@ -15,5 +15,5 @@ def root():
     ve.clean_votes()
 
     msg, status_code = "Cleaned", 200
-    logger.info("{} {}".format(msg, status_code))
+    logger.info(f"{msg} {status_code}")
     return msg, status_code

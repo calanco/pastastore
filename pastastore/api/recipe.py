@@ -11,12 +11,12 @@ def recipe(recipe):
     Handling the /recipe endpoint
     '''
     recipe = recipe.replace("_", " ")
-    logger.info("{} {}".format("/recipe", recipe))
+    logger.info(f"/recipe {recipe}")
 
     try:
         msg, status_code = str(ve.get_vote(recipe)), 200
     except KeyError:
-        msg, status_code = "{} has not been added so far".format(recipe), 404
+        msg, status_code = f"{recipe} has not been added so far", 404
 
-    logger.info("{} {}".format(msg, status_code))
+    logger.info(f"{msg} {status_code}")
     return msg, status_code

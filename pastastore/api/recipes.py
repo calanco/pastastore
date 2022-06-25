@@ -17,5 +17,5 @@ def recipes():
     except KeyError:
         msg, status_code = "No recipe has been added so far", 404
 
-    logger.info("{} {}".format(msg, status_code))
+    logger.info(f"{msg} {status_code}")
     return msg, status_code

@@ -25,7 +25,7 @@ class TestVoteEngine():
 
         recipe = "unexisting_recipe"
         with pytest.raises(RecipeError,
-                           match="{} is not allowed".format(recipe)):
+                           match=f"{recipe} is not allowed"):
             ve.vote_recipe(recipe)
 
     def test_sort_pasta_recipes(self):

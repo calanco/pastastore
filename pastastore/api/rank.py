@@ -14,7 +14,7 @@ def rank():
 
     if not ve.get_votes():
         msg, status_code = "No recipe has been added so far", 200
-        logger.info("{} {}".format(msg, status_code))
+        logger.info(f"{msg} {status_code}")
         return msg, status_code
 
     sorted_pasta_recipe_counts = tuple(ve.sort_pasta_recipes(**ve.get_votes()))
@@ -26,5 +26,5 @@ def rank():
         rank += 1
 
     msg, status_code = result, 200
-    logger.info("{} {}".format(msg, status_code))
+    logger.info(f"{msg} {status_code}")
     return msg, status_code

@@ -4,4 +4,4 @@ class RecipeError(Exception):
     in __pasta_recipes
     '''
     def __init__(self, recipe: str):
-        super().__init__("{} is not allowed".format(recipe))
+        super().__init__(f"{recipe} is not allowed")
