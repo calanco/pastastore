@@ -1,7 +1,8 @@
 .SHELLFLAGS: -ec
 
+PYTHON = pipenv run python3
+
 # Default make target
-.PHONY: default
 default:
 	$(MAKE) help
 
@@ -14,21 +15,19 @@ dev-deps:
 	@pipenv install --dev
 
 # Running PastaStore REST API in debug mode
-.PHONY: debug
 debug: deps
 	@echo "Starting PastaStore in debug mode.."
-	@pipenv run python3 run.py --debug --env development
+	@$(PYTHON) run.py --debug --env development
 
 # Running PastaStore REST API
 .PHONY: run
 run: deps
 	@echo "Starting PastaStore.."
-	@pipenv run python3 run.py --env development
+	@$(PYTHON) run.py --env development
 
 # Running PastaStore REST API
-.PHONY: help
 help: deps
-	@pipenv run python3 run.py --help
+	@$(PYTHON) run.py --help
 
 # Removing the virtualenv created in deps make target
 clean:
