@@ -3,7 +3,7 @@ import os
 from pastastore import create_app
 
 
-def parse_arguments() -> (int, bool, str):
+def parse_arguments() -> tuple[int, bool, str]:
     '''
     Parsing input arguments passed to PastaStore
     '''
